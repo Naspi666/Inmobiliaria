@@ -1,0 +1,27 @@
+<%- include('partials/_header') %>
+<div class="container">
+    <div class="row">
+        <!-- FORM-->
+        <div class="col-md-7 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="offset-md-5">Edit User</h3>
+                    <form action="/edit/<%= user._id%>" method="post">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="name" placeholder="Add a User" value="<%= user.name%>"/>
+                            <input class="form-control" type="text" name="lastname" placeholder="Add a Last Name" value="<%= user.lastname %>">
+                            <input class="form-control" type="text" name="username" placeholder="Add a User Name" value="<%= user.username %>">
+                            <input class="form-control" type="text" name="password" placeholder="Add a Password" value="<%= user.password %>">
+                            <input class="form-control" type="text" name="email" placeholder="Add a Email" value="<%= user.email %>">
+                            <input class="form-control" type="text" name="phone" placeholder="Add a Phone" value="<%= user.phone %>">
+                        </div>
+                        <button class="btn btn-primary offset-md-5" type="submit">
+                            Update
+                        </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('partials/_footer')%>
