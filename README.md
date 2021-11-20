@@ -4,6 +4,7 @@ Proyecto Mintic 2022 Ciclo 4
 
 Grupo #16 - HADES Web
 Integrantes:
+
 Alied Victoria Garzón
 Eliana Carolina Ríos
 David Santiago Naspiran
