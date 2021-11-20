@@ -1,39 +1,53 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../models/user');
+const passport = require('passport');
 
-router.get('/', async (req, res) => {
-    const users = await User.find();
-    res.render('index',{
-        users
-    });
+router.get('/', (req, res, next) => {
+  res.render('index');
 });
 
-router.post('/add', async (req, res) => {
-    const user = new User(req.body);
-    await user.save();
-    res.redirect('/');
+router.get('/signup', (req, res, next) => {
+  res.render('signup')
+})
+
+router.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: "/profile",
+    failureRedirect: "/signup",
+    passReqToCallback: true
+}));
+
+router.get('/signin', (req, res, next) => {
+    res.render('signin')
 });
 
-router.get('/delete/:id', async (req, res) => {
-    const { id } = req.params;
-    await User.deleteOne({_id: id});
-    res.redirect('/');
+router.post('/signin', passport.authenticate('local-signin', {
+  successRedirect: '/profile',
+  failureRedirect: '/signin',
+  passReqToCallback: true
+}));
+
+router.get('/logout', (req, res, next) => {
+  req.logOut();
+  res.redirect('/')
 });
 
-router.get('/edit/:id', async (req, res) => {
-    const { id } = req.params;
-    const user = await User.findById(id);
-    res.render('edit', {
-        user
-    });
+// protected with authentication 
+
+router.use((req, res, next) => {
+  isAuthenticated(req, res, next)
+  next()
+})
+
+router.get('/profile', isAuthenticated,(req, res, next) => {
+  res.render('profile')
 });
 
-router.post('/edit/:id', async (req, res) => {
-    const { id } = req.params;
-    await User.updateOne({_id: id}, req.body);
-    res.redirect('/');
-});
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()){
+    return next();
+  }
+  res.redirect('/')
+};
 
 module.exports = router;
