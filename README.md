@@ -1,5 +1,6 @@
 # Inmobiliaria
 repositorio de inmobiliaria
+
 Dependencias de despliege
 * bcrypt nodejs
 * body parser
@@ -11,5 +12,6 @@ Dependencias de despliege
 * morgan
 * passport
 * passport local
+
 Dependencias de desarrollo
 * nodemon
