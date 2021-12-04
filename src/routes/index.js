@@ -9,8 +9,10 @@ import {
 } from "../controllers";
 
 router.get("/", home.index);
+router.get("/profile", home.profile);
+
 router.get("/images/:image_id", image.index);
-router.post("/images", image.create);
+router.post("/images/:user_id/create", image.create);
 router.post("/images/:image_id/like", image.like);
 router.post("/images/:image_id/comment", image.comment);
 router.delete("/images/:image_id", image.remove);
@@ -24,6 +26,5 @@ router.post("/auth/signup", auth.signUp);
 
 router.get("/auth/logout", auth.logout);
 
-router.get("/profile", auth.profile);
 
 export default router;

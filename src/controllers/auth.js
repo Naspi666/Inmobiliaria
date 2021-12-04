@@ -1,14 +1,17 @@
 import passport from "passport";
 
+import sidebar from "../helpers/sidebar";
+import { Image } from '../models';
+
 export const renderSignUp = (req, res) => {
   res.render("authentication/signup", {
-    layout: "nostats",
+    layout: "auth",
   });
 };
 
 export const renderSignIn = (req, res) => {
   res.render("authentication/signin", {
-    layout: "nostats",
+    layout: "auth",
   });
 };
 
@@ -23,10 +26,6 @@ export const signIn = passport.authenticate("signin", {
   failureRedirect: "/auth/signin",
   failureFlash: true,
 });
-
-export const profile = (req, res) => {
-  res.render("authentication/profile");
-};
 
 export const logout = (req, res) => {
   req.logout();

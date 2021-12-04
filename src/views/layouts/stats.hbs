@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Inmobiilaria</title>
+  {{>head}}
+</head>
+
+<body>
+
+  {{>navigation}}
+
+<div class="container p-4">
+      <div class="row">
+        <div class="col-md-8">
+          {{{ body  }}} 
+        </div>
+        <div class="col-md-4">
+          {{>stats this}}
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    {{>scripts}}
+    <script src="/public/js/scripts.js"></script>
+</body>
+</html>

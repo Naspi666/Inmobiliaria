@@ -1,6 +1,7 @@
+<!-- IMAGE -->
 <div class="card bg-dark text-white">
   <div class="card-header d-flex justify-content-between align-items-center">
-    <h2 class="card-title">{{ image.title }}</h2>
+    <h2 class="card-title mb-0">{{ image.title }}</h2>
     <button class="btn btn-danger btn-sm" id="btn-delete" data-id="{{image.uniqueId}}">
       <i class="fa fa-times"></i> Delete
     </button>
@@ -10,14 +11,20 @@
       <img src="/uploads/{{image.filename}}" class="img-fluid">
       <!--<p>Posted by: {{ user.email }}</p>-->
     </div>
-    <div class="row d-flex justify-content-between align-items-center">
+    <div class="row mt-4">
       <div class="col">
-        <p>Description: {{ image.description }}</p>
         <p>Type: {{ image.type }}</p>
       </div>
       <div class="col">
         <p>Zone: {{ image.zone }}</p>
+      </div>
+      <div class="col">
         <p>Number Rooms: {{ image.numrooms}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>Description: {{ image.description }}</p>
       </div>
     </div>
   </div>
@@ -26,8 +33,8 @@
       <i class="fas fa-thumbs-up"></i> Like
     </button>
     <p>
-      <span class="likes-count">{{image.likes}}</span>
       <i class="fas fa-heart"></i>
+      <span class="likes-count">{{image.likes}}</span>
     </p>
     <p>
       <i class="fas fa-eye"></i> {{image.views}}
@@ -42,13 +49,13 @@
 <!-- COMMENTS -->
 <div class="card mt-2 bg-dark text-white">
   <div class="card-header d-flex justify-content-between align-items-center">
-    <h3 class="card-title">Comments</h3>
-    <button class="btn btn-info" id="btn-toggle-comment">
+    <h3 class="card-title mb-0">Comments</h3>
+    <button class="btn btn-info" id="btn-toggle">
       <i class="fa fa-comments-o"></i> Post a Comment
     </button>
   </div>
   <div class="card-body">
-    <blockquote id="post-comment">
+    <blockquote id="post">
       <form action="/images/{{ image.uniqueId }}/comment" method="POST">
         <div class="form-group">
           <input type="text" class="form-control bg-dark text-light border border-success" name="name"
@@ -71,10 +78,10 @@
     </blockquote>
     <ul class="list-group p-4">
       {{#each comments}}
-      <li class="list-group-item">
+      <li class="list-group-item bg-dark">
         <div class="row">
-          <a href="#" class="col text-center">
-            <img src="http://gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45" />
+          <a href="#" class="col-md-3 text-center mt-3">
+            <img src="http://gravatar.com/avatar/{{gravatar}}?d=identicon&s=45" />
           </a>
           <blockquote class="col">
             <p class="lead">{{comment}}</p>

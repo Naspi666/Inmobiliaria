@@ -4,7 +4,7 @@ import md5 from "md5";
 
 import sidebar from "../helpers/sidebar";
 import { randomNumber } from "../helpers/libs";
-import { Image, Comment } from "../models";
+import { Image, Comment, User } from "../models";
 
 export const index = async (req, res) => {
   let viewModel = { image: {}, comments: [] };
@@ -38,6 +38,8 @@ export const create = (req, res) => {
       const ext = path.extname(req.file.originalname).toLowerCase();
       const targetPath = path.resolve(`./uploads/${imgUrl}${ext}`);
 
+      const user = await User.findOne({ email: req.params.user_id });
+
       // Validate Extension
       if (
         ext === ".png" ||
@@ -50,6 +52,7 @@ export const create = (req, res) => {
 
         // create a new image
         const newImg = new Image({
+          user_id: user._id,
           title: req.body.title,
           filename: imgUrl + ext,
           description: req.body.description,

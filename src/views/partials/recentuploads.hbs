@@ -1,0 +1,29 @@
+<!-- Recent Uploads -->
+<div class="card mt-2 bg-dark text-white">
+  <div class="card-header">
+    <i class="far fa-images"></i> Recent Uploads
+  </div>
+  <div class="card-body">
+    {{#each images}}
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <a href="/images/{{ uniqueId  }}">
+            <img src="/uploads/{{filename}}" alt="{{title}}" class="w-50 img-fluid" height="300px" style="object-fit: cover;">
+          </a>
+        </div>
+        <div class="col-md-12">
+          <div class="row mt-4">
+            <div class="col-md-4">
+              <p>Type: {{type}}</p>
+              <p>Zone: {{zone}}</p>
+              <p>Num Rooms: {{numrooms}}</p>
+            </div>
+            <div class="col-md-8">
+              <p>Description: {{description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

@@ -1,9 +1,15 @@
 $(function() {
-  // Post Toggle View
-  $('#post-comment').hide();
-  $('#btn-toggle-comment').click(e => {
+  //
+  $('#btn-toggle-notUser').click(e => {
     e.preventDefault();
-    $('#post-comment').slideToggle();
+    alert('Inicia sesion para poder subir un inmueble');
+  })
+
+  // Post Toggle View
+  $('#post').hide();
+  $('#btn-toggle').click(e => {
+    e.preventDefault();
+    $('#post').slideToggle();
   });
   
   // Like Button Request
