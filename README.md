@@ -25,6 +25,10 @@ npm install
 npm run build
 npm start
 ```
+#Development
+```
+npm run dev
+```
 
 # Tutorials followed
 
